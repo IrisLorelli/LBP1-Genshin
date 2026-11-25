@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}404 - Página Não Encontrada{% endblock %}
+
+{% block content %}
+<div class="error-box">
+    <h1>404</h1>
+    <p>Parece que você se perdeu em Teyvat. A página solicitada não existe.</p>
+    <br>
+    <a href="{{ url_for('main.dashboard') }}" class="btn btn-primary">Voltar ao Painel</a>
+</div>
+{% endblock %}

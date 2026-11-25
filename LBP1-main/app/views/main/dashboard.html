@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+
+{% block title %}Painel do Viajante{% endblock %}
+
+{% block content %}
+<div class="header">
+    <div>
+        <h1>Bem-vindo(a), {{ g.usuario.username }}!</h1>
+        <small>UID: {{ g.usuario.uid }} | Servidor: {{ g.usuario.regiao }}</small>
+    </div>
+    <div class="header-actions">
+        <form action="{{ url_for('main.alternar_tema') }}" method="POST">
+            <button type="submit" class="btn btn-outline">
+                Tema: {{ 'Claro' if tema == 'claro' else 'Escuro' }}
+            </button>
+        </form>
+        <a href="{{ url_for('auth.logout') }}" class="btn btn-danger">Sair</a>
+    </div>
+</div>
+
+
+<div class="grid-forms">
+    
+    <div class="form-box">
+        <h2>Cadastrar Novo Personagem</h2>
+        <form action="{{ url_for('personagens.cadastrar') }}" method="POST">
+            <div class="form-group">
+                <label for="nome_personagem">Nome:</label>
+                <input type="text" id="nome_personagem" name="nome" placeholder="Ex: Amber" required>
+            </div>
+            <div class="form-group">
+                <label for="elemento">Elemento:</label>
+                <select id="elemento" name="elemento" required>
+                    <option value="Pyro">Pyro</option>
+                    <option value="Hydro">Hydro</option>
+                    <option value="Anemo">Anemo</option>
+                    <option value="Electro">Electro</option>
+                    <option value="Dendro">Dendro</option>
+                    <option value="Cryo">Cryo</option>
+                    <option value="Geo">Geo</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="arma">Arma:</label>
+                <select id="arma" name="arma" required>
+                    <option value="Arco">Arco</option>
+                    <option value="Espada">Espada</option>
+                    <option value="Espadão">Espadão</option>
+                    <option value="Lança">Lança</option>
+                    <option value="Catalisador">Catalisador</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="raridade_personagem">Raridade:</label>
+                <select id="raridade_personagem" name="raridade" required>
+                    <option value="4">4 Estrelas</option>
+                    <option value="5">5 Estrelas</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar Personagem</button>
+        </form>
+    </div>
+
+    
+    <div class="form-box">
+        <h2>Cadastrar Nova Arma</h2>
+        <form action="{{ url_for('armas.cadastrar') }}" method="POST">
+            <div class="form-group">
+                <label for="nome_arma">Nome da Arma:</label>
+                <input type="text" id="nome_arma" name="nome" placeholder="Ex: Arco do Caçador" required>
+            </div>
+            <div class="form-group">
+                <label for="tipo_arma">Tipo:</label>
+                <select id="tipo_arma" name="tipo" required>
+                    <option value="Arco">Arco</option>
+                    <option value="Espada">Espada</option>
+                    <option value="Espadão">Espadão</option>
+                    <option value="Lança">Lança</option>
+                    <option value="Catalisador">Catalisador</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="raridade_arma">Raridade:</label>
+                <select id="raridade_arma" name="raridade" required>
+                    <option value="3">3 Estrelas</option>
+                    <option value="4">4 Estrelas</option>
+                    <option value="5">5 Estrelas</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nivel">Nível (1 a 90):</label>
+                <input type="number" id="nivel" name="nivel" min="1" max="90" value="1" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar Arma</button>
+        </form>
+    </div>
+</div>
+
+
+<div class="section-table">
+    <h2>Sua Coleção de Personagens</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Elemento</th>
+                <th>Arma</th>
+                <th>Raridade</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in personagens %}
+            <tr>
+                <td>{{ p.id }}</td>
+                <td>{{ p.nome }}</td>
+                <td>{{ p.elemento }}</td>
+                <td>{{ p.arma }}</td>
+                <td>{{ p.raridade }} Estrelas</td>
+                <td>
+                    <form action="{{ url_for('personagens.excluir', id=p.id) }}" method="POST">
+                        <button type="submit" class="btn btn-danger">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="6">Nenhum personagem cadastrado ainda.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<div class="section-table">
+    <h2>Seu Inventário de Armas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Tipo</th>
+                <th>Raridade</th>
+                <th>Nível</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in armas %}
+            <tr>
+                <td>{{ a.id }}</td>
+                <td>{{ a.nome }}</td>
+                <td>{{ a.tipo }}</td>
+                <td>{{ a.raridade }} Estrelas</td>
+                <td>Nível {{ a.nivel }}</td>
+                <td>
+                    <form action="{{ url_for('armas.excluir', id=a.id) }}" method="POST">
+                        <button type="submit" class="btn btn-danger">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="6">Nenhuma arma cadastrada ainda.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Genshin Impact - Autenticação{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper">
+    <div class="card">
+        <h2>Viajante - Acesso</h2>
+
+        <form method="POST" action="{{ url_for('auth.login') }}">
+            <div class="form-group">
+                <label for="uid">UID do Genshin:</label>
+                <input type="text" id="uid" name="uid" value="{{ ultimo_uid }}" placeholder="Ex: 600123456" required>
+            </div>
+
+            <div class="form-group">
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" placeholder="Mínimo 4 caracteres" required>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Nome de Usuário (apenas para cadastro):</label>
+                <input type="text" id="username" name="username" placeholder="Ex: Aether">
+            </div>
+
+            <div class="form-group">
+                <label for="regiao">Região / Servidor (apenas para cadastro):</label>
+                <select id="regiao" name="regiao">
+                    <option value="America">América</option>
+                    <option value="Europe">Europa</option>
+                    <option value="Asia">Ásia</option>
+                    <option value="TW_HK_MO">TW, HK, MO</option>
+                </select>
+            </div>
+
+            <div class="btn-group">
+                <button type="submit" name="acao" value="entrar" class="btn btn-primary">Entrar</button>
+                <button type="submit" name="acao" value="cadastrar" class="btn btn-secondary">Criar Conta</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

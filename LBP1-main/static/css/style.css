@@ -1,0 +1,250 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #28284e;
+    color: #cdd6f4;
+    line-height: 1.5;
+    padding: 25px;
+    transition: background-color 0.25s, color 0.25s;
+}
+
+body.tema-claro {
+    background-color: #b4cdfd;
+    color: #4c4f69;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Flash Messages */
+.flash-container {
+    margin-bottom: 20px;
+}
+
+.alert {
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    border-left: 5px solid;
+}
+
+.alert-success {
+    background-color: #1e3a2f;
+    color: #a6e3a1;
+    border-color: #a6e3a1;
+}
+
+.alert-danger {
+    background-color: #3f1d24;
+    color: #f38ba8;
+    border-color: #f38ba8;
+}
+
+.alert-warning {
+    background-color: #3d331d;
+    color: #f9e2af;
+    border-color: #f9e2af;
+}
+
+.alert-info {
+    background-color: #1d2d3f;
+    color: #89b4fa;
+    border-color: #89b4fa;
+}
+
+/* Login */
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh;
+}
+
+.card {
+    background-color: #45487a;
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+body.tema-claro .card,
+body.tema-claro .form-box,
+body.tema-claro table {
+    background-color: #81a9df;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card h2 {
+    text-align: center;
+    color: #f3e08b;
+    margin-bottom: 15px;
+}
+
+body.tema-claro .card h2 {
+    color: #505088;
+}
+
+/* Cabeçalho Dashboard */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    border-bottom: 2px solid #45475a;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Formulários */
+.grid-forms {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.form-box {
+    background-color: #4b4d79;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form-box h2 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #f3e08b;
+}
+
+body.tema-claro .form-box h2 {
+    color: #505088;
+}
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #4e548d;
+    background-color: #272755;
+    color: #ffffff;
+}
+
+body.tema-claro input,
+body.tema-claro select {
+    background-color: #b4daff;
+    color: #1e1e2e;
+    border-color: #a9b4cf;
+}
+
+/* Botões */
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.btn {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: #f3e08b;
+    color: #11111b;
+    flex: 1;
+}
+
+.btn-secondary {
+    background-color: #89b4fa;
+    color: #11111b;
+    flex: 1;
+}
+
+.btn-danger {
+    background-color: #f38ba8;
+    color: #11111b;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid #f3e08b;
+    color: #f3e08b;
+}
+
+body.tema-claro .btn-outline {
+    border-color: #505088;
+    color: #505088;
+}
+
+/* Tabelas */
+.section-table {
+    margin-bottom: 35px;
+}
+
+.section-table h2 {
+    margin-bottom: 12px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #6b6e9c;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    border: 1px solid #3f436e;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #555c9b;
+    color: #ffffff;
+}
+
+/* Página 404 */
+.error-box {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.error-box h1 {
+    font-size: 4rem;
+    color: #f38ba8;
+}
